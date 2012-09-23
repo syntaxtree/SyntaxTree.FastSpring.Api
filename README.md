@@ -1,6 +1,6 @@
-## SyntaxTree.FastSpring
+## SyntaxTree.FastSpring.Api
 
-SyntaxTree.FastSpring is a C# library to query the [FastSpring](http://www.fastspring/) REST API.
+SyntaxTree.FastSpring.Api is a C# library to query the [FastSpring](http://www.fastspring/) REST API.
 
 It works on .NET 3.5, .NET 4.0 and .NET 4.5.
 
@@ -50,3 +50,6 @@ public class Program
 ```
 
 We currently only support the order API, not the subscription one.
+
+All calls made to the FastSpring server are currently made synchronous and blocking.
+Wrap your calls into a Task if you want them to to be asynchronous.
