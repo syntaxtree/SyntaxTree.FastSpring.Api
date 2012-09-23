@@ -42,7 +42,7 @@ public class Program
 				username: "api-user",
 				password: "xxx"));
 
-		var order = store.Order("SYNXXXXXX-XXXX-XXXXX");
+		var order = store.Order(reference: "SYNXXXXXX-XXXX-XXXXX");
 
 		Console.WriteLine(order.Customer.FirstName);
 	}
