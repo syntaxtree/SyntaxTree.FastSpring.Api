@@ -11,7 +11,7 @@ namespace SyntaxTree.FastSpring.Api
 {
 	public sealed class CompanyStore
 	{
-		public static CompanyStore StoreFor(StoreCredential credential) {}
+		public CompanyStore(StoreCredential credential) {}
 		
 		public Order Order(string reference) {}
 	}
@@ -36,11 +36,11 @@ public class Program
 {
 	public static void Main()
 	{
-		var store = CompanyStore.StoreFor(
-		new StoreCredential(
-			company: "Microsoft",
-			username: "api-user",
-			password: "xxx"));
+		var store = new CompanyStore(
+			new StoreCredential(
+				company: "Microsoft",
+				username: "api-user",
+				password: "xxx"));
 
 		var order = store.Order("SYNXXXXXX-XXXX-XXXXX");
 

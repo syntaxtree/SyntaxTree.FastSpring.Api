@@ -9,8 +9,11 @@ namespace SyntaxTree.FastSpring.Api
     {
 	    private readonly StoreCredential _credential;
 
-		private CompanyStore(StoreCredential credential)
+		public CompanyStore(StoreCredential credential)
 		{
+			if (credential == null)
+				throw new ArgumentNullException("credential");
+
 			_credential = credential;
 		}
 
@@ -51,14 +54,6 @@ namespace SyntaxTree.FastSpring.Api
 	    private string StoreUri(string uri)
 		{
 			return "https://api.fastspring.com/company/" + _credential.Company + uri;
-		}
-
-		public static CompanyStore StoreFor(StoreCredential credential)
-		{
-			if (credential == null)
-				throw new ArgumentNullException("credential");
-
-			return new CompanyStore(credential);
 		}
     }
 }
