@@ -17,7 +17,7 @@ namespace SyntaxTree.FastSpring.Api
 			_credential = credential;
 		}
 
-		public T ParseResponse<T>(WebResponse response)
+		private static T ParseResponse<T>(WebResponse response)
 		{
 			if (response == null)
 				throw new InvalidOperationException("No response.");
