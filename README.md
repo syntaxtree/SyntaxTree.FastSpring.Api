@@ -49,7 +49,7 @@ public class Program
 }
 ```
 
-We currently only support the order API, not the subscription one.
+We currently only support the order and coupon API, not the subscription one.
 
 All calls made to the FastSpring server are currently made synchronous and blocking.
 Wrap your calls into a Task if you want them to to be asynchronous.
