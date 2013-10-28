@@ -17,6 +17,29 @@ namespace SyntaxTree.FastSpring.Api
 			_credential = credential;
 		}
 
+        public T ParseResponse<T>(WebResponse response)
+        {
+            if (response == null)
+                throw new InvalidOperationException("No response.");
+
+            var responseStream = response.GetResponseStream();
+            if (responseStream == null)
+                throw new InvalidOperationException("Unable to acquire response stream.");
+
+            return (T)new XmlSerializer(typeof(T)).Deserialize(responseStream);
+        }
+
+        public Coupon GenerateCoupon(string prefix)
+        {
+            if (prefix == null)
+                throw new ArgumentNullException("prefix");
+            if (prefix.Length == 0)
+                throw new ArgumentException("Prefix is empty.", "prefix");
+
+            var request = Request("POST", string.Concat("/coupon/",prefix,"/generate"));
+            return ParseResponse<Coupon>(request.GetResponse());
+        }
+
 		public Order Order(string reference)
 		{
 			if (reference == null)
@@ -25,16 +48,7 @@ namespace SyntaxTree.FastSpring.Api
 				throw new ArgumentException("Reference is empty.", "reference");
 
 			var request = Request("GET", "/order/" + reference);
-			var response = request.GetResponse();
-
-			if (response == null)
-				throw new InvalidOperationException("No response.");
-
-			var responseStream = response.GetResponseStream();
-			if (responseStream == null)
-				throw new InvalidOperationException("Unable to acquire response stream.");
-
-			return (Order) new XmlSerializer(typeof (Order)).Deserialize(responseStream);
+		    return ParseResponse<Order>(request.GetResponse());
 		}
 
 		private WebRequest Request(string method, string uri)

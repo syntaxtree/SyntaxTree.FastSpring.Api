@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="Address.cs" />
     <Compile Include="CompanyStore.cs" />
+    <Compile Include="Coupon.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderItem.cs" />
