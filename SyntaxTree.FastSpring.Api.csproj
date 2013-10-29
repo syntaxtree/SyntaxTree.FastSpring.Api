@@ -39,8 +39,11 @@
     <Compile Include="CompanyStore.cs" />
     <Compile Include="Coupon.cs" />
     <Compile Include="Contact.cs" />
+    <Compile Include="ReturnStatus.cs" />
+    <Compile Include="ShortOrder.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderItem.cs" />
+    <Compile Include="OrderSearchResult.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="PaymentDeclinationReason.cs" />
     <Compile Include="PaymentMethod.cs" />

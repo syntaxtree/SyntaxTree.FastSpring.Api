@@ -51,6 +51,17 @@ namespace SyntaxTree.FastSpring.Api
 			return ParseResponse<Order>(request.GetResponse());
 		}
 
+		public OrderSearchResult Orders(string query)
+		{
+			if (query == null)
+				throw new ArgumentNullException("query");
+			if (query.Length == 0)
+				throw new ArgumentException("Query is empty.", "query");
+
+			var request = Request("GET", "/orders/search?query=" + Uri.EscapeDataString(query));
+			return ParseResponse<OrderSearchResult>(request.GetResponse());
+		}
+
 		private WebRequest Request(string method, string uri)
 		{
 			var request = WebRequest.Create(StoreUri(uri));
